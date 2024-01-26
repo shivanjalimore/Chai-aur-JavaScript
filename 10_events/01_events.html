@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button>Click</button>
+    <p></p>
+
+
+    <input id="textBox" type="text" />
+    <div id="output"></div> -->
+
+    <form>
+        <div>
+          <label for="fname">First name: </label>
+          <input id="fname" type="text" />
+        </div>
+        <div>
+          <label for="lname">Last name: </label>
+          <input id="lname" type="text" />
+        </div>
+        <div>
+          <input id="submit" type="submit" />
+        </div>
+      </form>
+      <p></p>
+
+
+
+    <script>
+        // const btn = document.querySelector('button');
+        // btn.addEventListener('click',changeBackground);
+
+        // function changeBackground()
+        // {
+        //     btn.style.backgroundColor = 'red';
+        //     Text();
+        // }
+        // function Text()
+        // {
+        //     document.querySelector('p').innerHTML = "Hello";
+        // }
+
+        // btn.addEventListener('click',function(e)
+        // {
+        //     console.log(e);
+        // })
+
+        // const textBox = document.querySelector("#textBox");
+        // const output = document.querySelector("#output");
+        // textBox.addEventListener("keydown", (event) => {
+        // output.textContent = `You pressed "${event.key}".`;
+        // console.log(event);
+        // });
+
+        const form = document.querySelector("form");
+        const fname = document.getElementById("fname");
+        const lname = document.getElementById("lname");
+        const para = document.querySelector("p");
+
+        form.addEventListener("submit", (e) => {
+        if (fname.value === "" || lname.value === "") {
+        e.preventDefault();
+       para.textContent = "You need to fill in both names!";
+       }
+});
+
+
+    </script>
+</body>
+</html>
