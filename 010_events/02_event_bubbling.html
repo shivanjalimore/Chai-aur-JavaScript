@@ -1,0 +1,38 @@
+<!-- Event bubbling describes how the browser handles events targeted at nested elements. -->
+<!-- inner element get events of all outer elements-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+      <button>Click me!</button>
+    </div>
+    <pre id="output"></pre>
+
+    <script>
+        const output = document.querySelector("#output");
+        function handleClick(e)
+        {
+            e.stopPropagation();   //prevents the event from bubbling up to any other elements
+        output.textContent += `You clicked on a ${e.currentTarget.tagName} element\n`;
+        }
+
+        const container = document.querySelector("#container");
+        const button = document.querySelector("button");
+
+        document.body.addEventListener("click", handleClick);
+        container.addEventListener("click", handleClick);
+        button.addEventListener("click", handleClick);
+    </script>
+  </body>
+</html>
+
+// *************--- Output ---***************
+<!-- You clicked on a BUTTON element
+You clicked on a DIV element
+You clicked on a BODY element -->
