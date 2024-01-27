@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- The setInterval() method calls a function at specified intervals (in milliseconds).
+
+    The setInterval() method continues calling the function until clearInterval() is called, or the window is closed.
+    
+    1 second = 1000 milliseconds. -->
+
+    <h1> Chai aur Code</h1>
+    <button id="start">Start</button>
+
+    <button id="stop">Stop</button>
+
+
+<script>
+
+    // setInterval(function(){
+    //     console.log("Hitesh",Date.now());
+    // },1000)
+
+    // const sayDate = function(){
+    //     console.log("Shivanjali",Date.now());
+    // }
+    // setInterval(sayDate,1000,"hii");
+    let change;
+    const start = document.querySelector('#start')
+    function print()
+    {
+        console.log("Hello Shivanjali");
+    }
+    start.addEventListener('click',function()
+    {
+         change = setInterval(print,1000);
+    })
+
+    const stop = document.querySelector('#stop');
+    stop.addEventListener('click',function(){
+        console.log("Stopped");
+        clearTimeout(change);
+    })
+    
+
+</script>
+
+</body>
+</html>
