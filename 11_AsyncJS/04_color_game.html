@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Game</title>
+</head>
+<body>
+    <h1> Color Changing Game</h1>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <!-- //generate random color using Hex value ( 0 to 9 , A to F) and contains 6 digit -->
+
+    <!-- we need to use Math.random() to generate random digits -->
+
+    <script>
+        const randomColor = function(){
+            const hex = '0123456789ABCDEF';
+            let color = "#";   //Hex color value start with '#';
+            //for loop for generating 6 digits 
+            for(let i=0 ; i<6 ; i++)
+            {
+                color += hex[Math.floor(Math.random()*16)];   //*16 bcoz we have 16 values in hex
+            }
+            return color;
+        }
+        // console.log(randomColor());
+
+        let stopcolor;
+        const startChangingColor = function()
+        {
+            if(!stopcolor)
+            {
+            stopcolor =  setInterval(changeBgColor,1000);
+            }
+
+            function changeBgColor()
+            {
+                document.body.style.backgroundColor = randomColor();
+            }
+        }
+
+        // stop changing color
+        const stopChangingColor = function()
+        {
+           clearTimeout(stopcolor);
+           stopcolor = null;
+        }
+        document.querySelector('#start').addEventListener('click',startChangingColor);
+        document.querySelector('#stop').addEventListener('click',stopChangingColor);
+    </script>
+</body>
+</html>
