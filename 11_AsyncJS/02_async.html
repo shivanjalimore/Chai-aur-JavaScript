@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Chai aur Code</h1>
+    <button id="btn">Stop</button>
+
+
+    <!-- // setTimeout() method calls a function after a number of milliseconds.
+        //setInterval() method calls a function at specified intervals (in milliseconds). 
+         clearTimeout() method clears a timer set with the setTimeout() method.-->
+    <script>
+        // setTimeout(function() {
+        //     console.log("Shivanjali");
+        // },3000);
+
+        const random = function()
+        {
+            console.log("Shivanjali");
+        }
+        setTimeout(random,2000);
+
+        const changeText = function(){
+             document.querySelector('h1').innerHTML="Best JS Series";
+        }
+        const changeMe = setTimeout(changeText,2000);
+        
+        document.querySelector('#btn').addEventListener('click',function()
+        {
+            clearTimeout(changeMe);
+            console.log("Stopped");
+        })
+
+    </script>
+</body>
+</html>
