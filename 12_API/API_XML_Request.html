@@ -1,0 +1,40 @@
+<!-- 
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE The operation is complete. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body>
+    
+    <script>
+        // ---------------- AJAX Request -------------------------
+        const requestURL = 'https://api.github.com/users/hiteshchoudhary'; //Github API of user 'hiteshchoudhary'
+        const xhr = new XMLHttpRequest();                                 // XMLHttpRequest is a built-in object in web browsers that allows JavaScript to make HTTP requests to servers.
+        
+        //open method initializes a request. It takes two arguments: the HTTP method (in this case, 'GET' for retrieving data), and the URL to send the request to (requestURL).
+        xhr.open('GET',requestURL);
+
+        xhr.onreadystatechange = function()       //sets up an event handler. Whenever the readyState property changes, the function inside the curly braces will be executed.
+        {
+           console.log(xhr.readyState);         //readyState property represents the state of the request
+           if(xhr.readyState == 4)             //equals 4 (which means the request is complete)
+           {
+            const data = JSON.parse(this.responseText)  // Converting string into JSON Object
+            console.log(typeof data);                  // Now we get Object
+            console.log(data.followers);
+           }
+        }
+        xhr.send();                         //sends the actual HTTP request to the server
+
+    </script>
+</body>
+</html>
