@@ -1,0 +1,41 @@
+<!--  localStorage object stores data with no expiration date.
+
+The data is not deleted when the browser is closed, and are available for future sessions. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    
+   <script>
+
+    // // ------ Save Data to Local Storage
+    // localStorage.setItem('name', 'Shivanjali');
+    // localStorage.setItem('name1', 'Siddhi');
+
+    // // ------ Read Data from Local Storage
+    //  let lastname = localStorage.getItem('name');
+    //  console.log(lastname);
+
+    // // ------ Remove Data from Local Storage
+    // localStorage.removeItem('name1');
+
+    // // ------ Remove All (Clear Local Storage)
+    // // localStorage.clear();
+
+    let arr=["Scooby","Tommy"];
+    localStorage.setItem('name',arr);   //not stored in array
+    localStorage.setItem('name1',JSON.stringify(arr));  //get stored in form of array
+    
+    let printarr = localStorage.getItem('name1');
+    console.log(printarr);   // get print in form of String
+
+    console.log(JSON.parse(printarr));  //use JSON.parse to print value in array
+
+   </script>
+</body>
+</html>
