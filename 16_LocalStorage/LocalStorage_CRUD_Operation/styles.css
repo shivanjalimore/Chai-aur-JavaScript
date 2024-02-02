@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    height: 100vh;
+    width: 100%;
+}
+#heading
+{
+    font-size: 5vh;
+    font-weight: bolder;
+    color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#edit
+{
+    display: none;
+}
+.innercontainer
+{
+    height: 100%;
+    width: 100%;
+    /* margin: auto; */
+    display: flex;
+}
+.row-1{
+    
+    flex: 1;
+}
+form {
+    width: 80%;
+    margin: 8vh auto;
+    border: 2px solid black;
+    padding: 3vh;
+}
+
+label {
+    display: block;
+    margin-bottom: 2vh;
+}
+
+.input-container {
+    margin-bottom: 3vh;
+}
+
+input {
+    width: 100%;
+    padding: 2vh;
+    box-sizing: border-box;
+    margin-top: 2vh;
+}
+
+button {
+    background-color: #4CAF50;
+    margin-top: 2vh;
+    color: white;
+    padding: 2vh;
+    border: none;
+    border-radius: 2vh;
+    cursor: pointer;
+    font-size: 2vh;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.row-2
+{
+   
+    flex: 2;
+}
+table {
+    
+    margin-top: 8vh;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+#msg
+{
+    font-size: 2.3vh;
+    color: red;
+}
+
