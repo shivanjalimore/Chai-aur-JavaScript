@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <session>
+        <script>
+
+            //Same as Local Storage
+
+            sessionStorage.setItem('name',"Shivanjali");
+
+            let fname = sessionStorage.getItem('name');
+            console.log(fname);
+
+            let arr = ["ABC","XYZ","DEF"];
+            sessionStorage.setItem('array',JSON.stringify(arr));
+            console.log(JSON.parse(sessionStorage.getItem('array')));
+
+
+        </script>
+    </session>
+</body>
+</html>
