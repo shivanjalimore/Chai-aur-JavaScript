@@ -1,154 +1,158 @@
-// localStorage.clear();
-function manageData()
-{
-    let name = document.getElementById("name").value ;
-    let age = document.getElementById("age").value ;
-    let address = document.getElementById("address").value ;
-    let email = document.getElementById("email").value ;
+// Check if any required field is empty or null
+function manageData() {
+    // Retrieve values from input fields
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let address = document.getElementById("address").value;
+    let email = document.getElementById("email").value;
 
-    if(name=='' || age=='' || address=='' || email =='' || name == null || age==null || address==null || email ==null)
-    {
-        document.getElementById('msg').innerHTML="Please fill all data";
+    // If any field is empty or null, display an error message and return false
+    if (name == '' || age == '' || address == '' || email == '' || name == null || age == null || address == null || email == null) {
+        // Display an error message
+        document.getElementById('msg').innerHTML = "Please fill all data";
+        // Return false to indicate data is not valid
         return false;
     }
+    // Data is valid, return true
     return true;
 }
 
-
-function showData(){
+// Display data from localStorage on the webpage
+function showData() {
+    // Retrieve the 'peopleList' array from localStorage
     let peopleList;
-    if(localStorage.getItem('peopleList') == null)
-    {
-        peopleList =[];
-    }
-    else
-    {
+    if (localStorage.getItem('peopleList') == null) {
+        // If 'peopleList' doesn't exist in localStorage, initialize it as an empty array
+        peopleList = [];
+    } else {
+        // If 'peopleList' exists in localStorage, parse and retrieve its content
         peopleList = JSON.parse(localStorage.getItem('peopleList'));
     }
 
-    let html="";
-    peopleList.forEach(function(element,index){
+    let html = "";
+    // Iterate through each person in 'peopleList'
+    peopleList.forEach(function (element, index) {
+        // Generate HTML for each person's data and buttons
         html += "<tr>";
-        html += "<td>" + element.name +"</td>";
-        html += "<td>" + element.age +"</td>";
-        html += "<td>" + element.address +"</td>";
-        html += "<td>" + element.email +"</td>";
-        html += 
-           '<td><button onclick="deleteData('+index+
-           ')"class="btn" style="background-color:red;">Delete</button><button onclick="editData('
-           +index+')"class="btn" style="background-color:green;">Edit</button></td>';
-        html +="</tr>";
+        html += "<td>" + element.name + "</td>";
+        html += "<td>" + element.age + "</td>";
+        html += "<td>" + element.address + "</td>";
+        html += "<td>" + element.email + "</td>";
+        html +=
+            '<td><button onclick="deleteData(' + index +
+            ')" class="btn" style="background-color:red;">Delete</button><button onclick="editData(' +
+            index + ')" class="btn" style="background-color:green;">Edit</button></td>';
+        html += "</tr>";
     });
 
+    // Update the HTML content of the table with the generated HTML
     document.querySelector('#crudTable').innerHTML = html;
-
 }
 
- //Load all data when document or page load
- document.onload = showData();
+// Load and display data when the document or page loads
+document.onload = showData();
 
- //function to Add data to localStorage
- function AddData(){
-    if(manageData() == true)
-    {
-        let name = document.getElementById("name").value ;
-        let age = document.getElementById("age").value ;
-        let address = document.getElementById("address").value ;
-        let email = document.getElementById("email").value ;
-    
+// Add data to localStorage
+function AddData() {
+    if (manageData() == true) {
+        // Retrieve input values
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let address = document.getElementById("address").value;
+        let email = document.getElementById("email").value;
 
-    let peopleList;
-    if(localStorage.getItem('peopleList') == null)
-    {
-        peopleList =[];
-    }
-    else
-    {
-        peopleList = JSON.parse(localStorage.getItem('peopleList'));
-    }
-    peopleList.push(
-        {
-        name : name,
-        age : age,
-        address : address,
-        email : email ,
+        let peopleList;
+        if (localStorage.getItem('peopleList') == null) {
+            // If 'peopleList' doesn't exist in localStorage, initialize it as an empty array
+            peopleList = [];
+        } else {
+            // If 'peopleList' exists in localStorage, parse and retrieve its content
+            peopleList = JSON.parse(localStorage.getItem('peopleList'));
         }
-    );
-    localStorage.setItem('peopleList',JSON.stringify(peopleList));
-    showData();
- 
-       //clearing input
-        document.getElementById("name").value = "" ;
-        document.getElementById("age").value = "" ;
-        document.getElementById("address").value = "" ;
-        document.getElementById("email").value = "" ;
 
-  }
- }
+        // Add new person's data to the array
+        peopleList.push({
+            name: name,
+            age: age,
+            address: address,
+            email: email,
+        });
 
- //function to delete data from local Storage
-function deleteData(index){
+        // Update localStorage with the modified 'peopleList' and display updated data
+        localStorage.setItem('peopleList', JSON.stringify(peopleList));
+        showData();
 
-    let peopleList;
-    if(localStorage.getItem('peopleList') == null)
-    {
-        peopleList =[];
+        // Clear input fields
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("address").value = "";
+        document.getElementById("email").value = "";
     }
-    else
-    {
-        peopleList = JSON.parse(localStorage.getItem('peopleList'));
-    }
-    
-    peopleList.splice(index,1);
-    localStorage.setItem('peopleList',JSON.stringify(peopleList));
-    showData();
- 
 }
 
-
-//function to Edit data
-function editData(index){
-//submit button will hide and edit button will show up
-
-document.getElementById("submit").style.display="none";
-document.getElementById("edit").style.display="block";
-
-let peopleList;
-    if(localStorage.getItem('peopleList') == null)
-    {
-        peopleList =[];
-    }
-    else
-    {
+// Delete data from localStorage
+function deleteData(index) {
+    // Retrieve the current 'peopleList' from localStorage
+    let peopleList;
+    if (localStorage.getItem('peopleList') == null) {
+        // If 'peopleList' doesn't exist in localStorage, initialize it as an empty array
+        peopleList = [];
+    } else {
+        // If 'peopleList' exists in localStorage, parse and retrieve its content
         peopleList = JSON.parse(localStorage.getItem('peopleList'));
     }
 
-    //to show present data 
-    document.getElementById("name").value=peopleList[index].name;
-    document.getElementById("age").value=peopleList[index].age;
-    document.getElementById("address").value=peopleList[index].address;
-    document.getElementById("email").value=peopleList[index].email;
+    // Remove person at the specified index
+    peopleList.splice(index, 1);
 
-    document.querySelector('#edit').onclick = function(){
-        if(manageData() == true)
-        {
-           peopleList[index].name = document.getElementById("name").value
-           peopleList[index].age = document.getElementById("age").value
-           peopleList[index].address = document.getElementById("address").value
-           peopleList[index].email = document.getElementById("email").value
-        }
-    
-
-    localStorage.setItem('peopleList',JSON.stringify(peopleList));
+    // Update localStorage with the modified 'peopleList' and display updated data
+    localStorage.setItem('peopleList', JSON.stringify(peopleList));
     showData();
- 
-       //clearing input
-        document.getElementById("name").value = "" ;
-        document.getElementById("age").value = "" ;
-        document.getElementById("address").value = "" ;
-        document.getElementById("email").value = "" ;
+}
 
-        document.getElementById("submit").style.display="block";
-        document.getElementById("edit").style.display="none";
+// Edit existing data
+function editData(index) {
+    // Hide submit button and show edit button
+    document.getElementById("submit").style.display = "none";
+    document.getElementById("edit").style.display = "block";
+
+    let peopleList;
+    if (localStorage.getItem('peopleList') == null) {
+        // If 'peopleList' doesn't exist in localStorage, initialize it as an empty array
+        peopleList = [];
+    } else {
+        // If 'peopleList' exists in localStorage, parse and retrieve its content
+        peopleList = JSON.parse(localStorage.getItem('peopleList'));
+    }
+
+    // Populate input fields with existing data
+    document.getElementById("name").value = peopleList[index].name;
+    document.getElementById("age").value = peopleList[index].age;
+    document.getElementById("address").value = peopleList[index].address;
+    document.getElementById("email").value = peopleList[index].email;
+
+    // Update data on edit
+    document.querySelector('#edit').onclick = function () {
+        if (manageData() == true) {
+            // Update person's data in the array
+            peopleList[index].name = document.getElementById("name").value;
+            peopleList[index].age = document.getElementById("age").value;
+            peopleList[index].address = document.getElementById("address").value;
+            peopleList[index].email = document.getElementById("email").value;
+        }
+
+        // Update localStorage with the modified 'peopleList' and display updated data
+        localStorage.setItem('peopleList', JSON.stringify(peopleList));
+        showData();
+
+        // Clear input fields
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("address").value = "";
+        document.getElementById("email").value = "";
+
+        // Show submit button and hide edit button
+        document.getElementById("submit").style.display = "block";
+        document.getElementById("edit").style.display = "none";
     }
 }
