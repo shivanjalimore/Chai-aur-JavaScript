@@ -8,7 +8,7 @@
 }
 #heading
 {
-    font-size: 5vh;
+    font-size: 3vw;
     font-weight: bolder;
     color: blueviolet;
     display: flex;
@@ -21,7 +21,7 @@
 }
 .innercontainer
 {
-    height: 100%;
+    height: calc(100vh-3vw);
     width: 100%;
     /* margin: auto; */
     display: flex;
@@ -31,37 +31,39 @@
     flex: 1;
 }
 form {
-    width: 80%;
-    margin: 8vh auto;
+    width: 70%;
+    margin: 2vw auto;
     border: 2px solid black;
-    padding: 3vh;
+    padding: 2vw;
 }
 
 label {
     display: block;
-    margin-bottom: 2vh;
+    margin-bottom: 1vw;
+    font-size: 1vw;
+    font-weight: bolder;
 }
 
 .input-container {
-    margin-bottom: 3vh;
+    margin-bottom: 2vw;
 }
 
 input {
     width: 100%;
-    padding: 2vh;
+    padding: 1vw;
     box-sizing: border-box;
-    margin-top: 2vh;
+    margin-bottom: 1vw;
 }
 
 button {
     background-color: #4CAF50;
-    margin-top: 2vh;
+    margin-top: 1vw;
     color: white;
-    padding: 2vh;
+    padding: 1vw;
     border: none;
-    border-radius: 2vh;
+    border-radius: 1vw;
     cursor: pointer;
-    font-size: 2vh;
+    font-size: 1vw;
 }
 
 button:hover {
@@ -71,18 +73,19 @@ button:hover {
 {
    
     flex: 2;
+    padding: 2vw;
 }
 table {
     
-    margin-top: 8vh;
+    padding: 2vw;
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 1vw;
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 1vw;
     text-align: left;
 }
 
@@ -96,7 +99,32 @@ tr:nth-child(even) {
 }
 #msg
 {
-    font-size: 2.3vh;
+    font-size: 1.5vw;
     color: red;
 }
+@media (max-width:600px) {
 
+    .innercontainer{
+        display: flex;
+        flex-direction: column;
+    }
+     label
+    {
+       font-size: 5vh;
+    }
+    button {
+        font-size: 5vh;
+    }
+    table{
+        font-size: 5vh;
+    }
+    #heading
+    {
+        font-size: 8vh;
+    }
+    .btn
+    {
+        font-size: 3vh;
+    }
+  
+}
